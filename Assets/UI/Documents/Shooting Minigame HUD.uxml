@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Screen%20Menu.uss?fileID=7433441132597879392&amp;guid=b2bc59ce1b0d0ef46a357fd9a158d72f&amp;type=3#Screen Menu"/>
+    <ui:VisualElement name="HUDContainer" class="hud-container">
+        <ui:VisualElement name="ScoreContainer" class="hud-text-container" style="flex-grow: 1; align-self: flex-end; max-height: 25%; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; max-width: 15%; margin-right: 30%; margin-left: 5%; margin-bottom: 1%;">
+            <ui:Label text="Score" name="ScoreLabel" class="hud-text"/>
+            <ui:Label text="0" name="ScoreCounter" class="hud-text"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="AmmoContainer" class="hud-text-container" style="flex-grow: 1; align-self: flex-end; max-height: 25%; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; max-width: 15%; margin-left: 30%; margin-right: 5%; margin-bottom: 1%;">
+            <ui:Label text="Ammo" name="AmmoLabel" class="hud-text"/>
+            <ui:Label text="00 / 00" name="MagazineLabel" class="hud-text"/>
+            <ui:Label text="00" name="ReserveLabel" class="hud-text"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

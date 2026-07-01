@@ -1,0 +1,6 @@
+(Top right)>Edit>Project Settings>Physics>Settings>Layer Collision Matrix:
+(Physics, not Physics 2D😃)
+
+No collision:
+·UI/(any)
+·water/water

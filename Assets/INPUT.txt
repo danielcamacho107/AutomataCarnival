@@ -1,0 +1,1 @@
+(Top right)>Project Settings>Player>Other Settings>Configuration>Active Input Handling : Both (restart unity)
