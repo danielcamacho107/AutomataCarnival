@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
-
 
 
 public class ShootingMinigameHUD : MonoBehaviour
