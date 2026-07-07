@@ -180,6 +180,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb360b468b0b8d04ea5fd9a2b47efabb, type: 3}
+--- !u!1001 &405854146
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4271414794283911492, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_Name
+      value: Whack a Mole Minigame HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.29728
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12852
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716963850873679771, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500736454989693857, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
+      propertyPath: m_TimeRemaining
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50d8e5ff281bb044080bda99ba9e99f6, type: 3}
 --- !u!1001 &751192079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -961,13 +1022,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4014440337272031343, guid: 62236fc0ef5620f4f8d112b2343f0adc, type: 3}
+      propertyPath: m_TimeRemaining
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5169201155432302067, guid: 62236fc0ef5620f4f8d112b2343f0adc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.24
+      value: -5.59
       objectReference: {fileID: 0}
     - target: {fileID: 5169201155432302067, guid: 62236fc0ef5620f4f8d112b2343f0adc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: 5169201155432302067, guid: 62236fc0ef5620f4f8d112b2343f0adc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1027,3 +1092,4 @@ SceneRoots:
   - {fileID: 908700133}
   - {fileID: 939638486}
   - {fileID: 5999804596322568629}
+  - {fileID: 405854146}

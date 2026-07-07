@@ -1,11 +1,24 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Whacker : MonoBehaviour
 {
+    // Delegate for the event that is triggered when the score changes
+    public delegate void WhackDataChangedHandler(uint score, uint timeRemaining);
+
     private Vector2 m_MousePosition;
 
     private uint m_Score;
+
+    // Event that is triggered when the score changes
+    private WhackDataChangedHandler m_WhackDataChanged;
+
+    [SerializeField]
+    [Tooltip("The starting time in seconds for the minigame.")]
+    private uint m_TimeRemaining;
+
+    private bool m_TimeTicking = false;
 
     public uint score
     {
@@ -17,6 +30,33 @@ public class Whacker : MonoBehaviour
 
     // Reference to the input actions class
     private WhackAMoleMinigame m_InputActions;
+
+    public void SubscribeToWhackDataChanged(WhackDataChangedHandler handler)
+    {
+        m_WhackDataChanged += handler;
+    }
+
+    public void UnsubscribeFromWhackDataChanged(WhackDataChangedHandler handler)
+    {
+        m_WhackDataChanged -= handler;
+    }
+
+    private IEnumerator TickTimerCoorutine()
+    {
+        if (m_TimeRemaining > 0 && !m_TimeTicking)
+        {
+            m_TimeTicking = true;
+            yield return new WaitForSeconds(1f);
+
+            m_TimeRemaining--;
+
+            // Trigger the event to notify subscribers of the time change
+            m_WhackDataChanged?.Invoke(m_Score, m_TimeRemaining);
+
+            m_TimeTicking = false;
+        }
+    }
+
     private void SnapToMouse()
     {
         // Get the mouse position in world space
@@ -37,6 +77,9 @@ public class Whacker : MonoBehaviour
         {
             mole.Hit();
             m_Score += mole.score;
+
+            // Trigger the event to notify subscribers of the score change
+            m_WhackDataChanged?.Invoke(m_Score, m_TimeRemaining);
         }
     }
 
@@ -63,5 +106,6 @@ public class Whacker : MonoBehaviour
     private void FixedUpdate()
     {
         SnapToMouse();
+        StartCoroutine(TickTimerCoorutine());
     }
 }
