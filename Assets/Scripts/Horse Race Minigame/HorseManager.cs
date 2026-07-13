@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class HorseManager : MonoBehaviour
 {
+    public delegate void GoalReached(Horse winner);
+
     private HorseManager m_Instance;
 
     public HorseManager instance
@@ -32,6 +34,18 @@ public class HorseManager : MonoBehaviour
 
     private float m_DistancePerStep;
     private float m_TimePerStep;
+
+    private GoalReached m_GoalReached;
+
+    public void SubscribeToGoalReached(GoalReached callback)
+    {
+        m_GoalReached += callback;
+    }
+
+    public void UnsubscribeFromGoalReached(GoalReached callback)
+    {
+        m_GoalReached -= callback;
+    }
 
     private void Initialize()
     {
