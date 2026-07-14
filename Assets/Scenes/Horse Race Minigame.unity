@@ -695,6 +695,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6279053333894944004, guid: 8bc639f8ee2091d419ad7fa68cff099c, type: 3}
+      propertyPath: m_HorseMovementTime
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6279053333894944004, guid: 8bc639f8ee2091d419ad7fa68cff099c, type: 3}
+      propertyPath: m_HorseMovementSteps
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -765,6 +773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507181276082973134, guid: a41360410eb688c468f6d4d12151ce95, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1706926447056308335, guid: a41360410eb688c468f6d4d12151ce95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

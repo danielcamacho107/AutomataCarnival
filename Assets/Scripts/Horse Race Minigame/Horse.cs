@@ -19,6 +19,12 @@ public class Horse : MonoBehaviour
         m_SortingOrder = Random.Range(0, 101);
     }
 
+    public void StopMoving()
+    {
+        // Reset the flag to indicate that the horse is not moving
+        m_IsMoving = false;
+    }
+
     public IEnumerator MoveToCoroutine(float distance, float movementTime)
     {
         // Validate the flag for movement
@@ -33,7 +39,7 @@ public class Horse : MonoBehaviour
         float normalizedTime = 0.0f;
 
         // Loop until the horse reaches the target position
-        while (!transform.position.Equals(targetPosition))
+        while (Vector3.Distance(transform.position, targetPosition) > 0.001f)
         {
             // Add the elapsed time since the last frame to the total elapsed time
             elapsedTime += Time.deltaTime;
@@ -49,6 +55,8 @@ public class Horse : MonoBehaviour
 
             yield return null;
         }
+
+        transform.position = targetPosition;
 
         // Reset the flag to indicate that the horse has stopped moving
         m_IsMoving = false;

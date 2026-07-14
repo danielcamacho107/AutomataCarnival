@@ -47,6 +47,15 @@ public class BetHandler : MonoBehaviour
     private void OnHorseReachedGoal(Horse winner)
     {
         m_BetWonCallback?.Invoke(m_PredictedWinner == winner);
+
+        // Reset the predicted winner for the next race
+        m_PredictedWinner = null;
+
+        // Reset the selected horse for the next race
+        m_SelectedHorse = null;
+
+        // Reset the race state in the HorseManager
+        HorseManager.instance.RestartRace();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

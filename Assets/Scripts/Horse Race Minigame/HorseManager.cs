@@ -33,6 +33,8 @@ public class HorseManager : MonoBehaviour
     [SerializeField]
     private uint m_HorseMovementSteps = 10;
 
+    private float m_XStart = -7f;
+
     [SerializeField]
     [Tooltip("The position on the x coordinate the horse needs to reach.")]
     private float m_XGoal = 7f;
@@ -41,6 +43,7 @@ public class HorseManager : MonoBehaviour
     private float m_TimePerStep;
 
     private bool m_Running;
+    private bool m_Resetting;
 
     private GoalReached m_GoalReached;
 
@@ -62,11 +65,35 @@ public class HorseManager : MonoBehaviour
             m_Horses.Add(horse);
         }
 
+
         // Calculate the max distance per step based on the goal and number of steps
         m_DistancePerStep = m_XGoal / m_HorseMovementSteps;
 
         // Calculate the time per step based on the total movement time and number of steps
         m_TimePerStep = m_HorseMovementTime / m_HorseMovementSteps;
+
+        // Save the starting position of the horses
+        m_XStart = m_Horses[0].transform.position.x;
+
+        // Set the resetting flag to false
+        m_Resetting = false;
+
+        // Set the running flag to false
+        StopRace();
+    }
+
+    public void RestartRace()
+    {
+        // Set the resetting flag to true
+        m_Resetting = true;
+
+        // Loop through each horse and stop their movement
+        foreach (Horse horse in m_Horses)
+        {
+            horse.StopAllCoroutines();
+            horse.StopMoving();
+            horse.StartCoroutine(horse.MoveToCoroutine(m_XStart - horse.transform.position.x, m_TimePerStep));
+        }
 
         // Set the running flag to false
         StopRace();
@@ -151,9 +178,30 @@ public class HorseManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_Running) { return; }
-        SortHorses();
-        MoveHorses();
-        CheckForWinner();
+        if (m_Running)
+        {
+            SortHorses();
+            MoveHorses();
+            CheckForWinner();
+        }
+
+        if (m_Resetting)
+        {
+            bool allReset = true;
+            // Once all horses have been reset, set the resetting flag to false
+            foreach (Horse horse in m_Horses)
+            {
+                if (Mathf.Abs(horse.transform.position.x - m_XStart) > 0.001f)
+                {
+                    allReset = false;
+                    break;
+                }
+            }
+
+            if (allReset)
+            {
+                m_Resetting = false;
+            }
+        }
     }
 }
