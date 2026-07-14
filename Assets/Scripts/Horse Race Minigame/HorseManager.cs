@@ -5,15 +5,20 @@ public class HorseManager : MonoBehaviour
 {
     public delegate void GoalReached(Horse winner);
 
-    private HorseManager m_Instance;
+    private static HorseManager m_Instance;
 
-    public HorseManager instance
+    public static HorseManager instance
     {
         get
         {
             if (m_Instance == null)
             {
-                m_Instance = new HorseManager();
+                m_Instance = FindAnyObjectByType<HorseManager>();
+                if (m_Instance == null)
+                {
+                    GameObject obj = new GameObject("HorseManager");
+                    m_Instance = obj.AddComponent<HorseManager>();
+                }
             }
 
             return m_Instance;
@@ -30,10 +35,12 @@ public class HorseManager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The position on the x coordinate the horse needs to reach.")]
-    private float m_XGoal = 9f;
+    private float m_XGoal = 7f;
 
     private float m_DistancePerStep;
     private float m_TimePerStep;
+
+    private bool m_Running;
 
     private GoalReached m_GoalReached;
 
@@ -60,6 +67,21 @@ public class HorseManager : MonoBehaviour
 
         // Calculate the time per step based on the total movement time and number of steps
         m_TimePerStep = m_HorseMovementTime / m_HorseMovementSteps;
+
+        // Set the running flag to false
+        StopRace();
+    }
+
+    public void StartRace()
+    {
+        // Set the running flag to true
+        m_Running = true;
+    }
+
+    public void StopRace()
+    {
+        // Set the running flag to false
+        m_Running = false;
     }
 
     private void SortHorses()
@@ -88,8 +110,32 @@ public class HorseManager : MonoBehaviour
         }
     }
 
+    private void CheckForWinner()
+    {
+        // Check if any horse has reached the goal
+        foreach (Horse horse in m_Horses)
+        {
+            if (horse.transform.position.x >= m_XGoal)
+            {
+                // Stop the race
+                StopRace();
+
+                // Invoke the goal reached event
+                m_GoalReached?.Invoke(horse);
+                break;
+            }
+        }
+    }
+
     private void Awake()
     {
+        if (m_Instance != null && m_Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        m_Instance = this;
+        DontDestroyOnLoad(gameObject);
         Initialize();
     }
 
@@ -105,7 +151,9 @@ public class HorseManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!m_Running) { return; }
         SortHorses();
         MoveHorses();
+        CheckForWinner();
     }
 }
