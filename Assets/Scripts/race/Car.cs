@@ -27,7 +27,7 @@ public class Car : MonoBehaviour
     [Header("Lanes")]
     //following next waypoint
     public Waypoint currentWaypoint;
-    public int nextWaypoint;
+    public int lane=0;
     //random change lane
     public bool laneLock=false;
     public float maxImpulsivity=75f;
@@ -37,6 +37,8 @@ public class Car : MonoBehaviour
     protected float changeLaneICD=0f;
     //import
     protected UIMsg uimsg;
+    protected SpriteRenderer rend;
+    protected Draft draft;
 
 
 
@@ -48,9 +50,11 @@ public class Car : MonoBehaviour
         speed=Random.Range(maxSpeed, minSpeed);
         impulsivity=Random.Range(maxImpulsivity, minImpulsivity);
         uimsg=FindAnyObjectByType<UIMsg>();
+        rend=GetComponentInChildren<SpriteRenderer>();
+        draft=GetComponentInChildren<Draft>();
     }
     void Update(){
-        if(Time.time>crashICD){
+        if(Time.timeScale!=0f && Time.time>crashICD){
             SoftClampSpeed();
             Move();
         }
@@ -83,26 +87,34 @@ public class Car : MonoBehaviour
     }
     //funx
     protected void Move(){
-        Debug.LogWarning(""+gameObject.name+" to "+currentWaypoint.name+"["+nextWaypoint+"]");
         transform.position = Vector3.MoveTowards(transform.position,
-            currentWaypoint.nextWaypoints[nextWaypoint].gameObject.transform.position,
+            currentWaypoint.nextWaypoints[GetLane()].gameObject.transform.position,
             (currentSpeed+draftScale)*Time.deltaTime);
     }
     public void ChangeLane(){
-        nextWaypoint=0;//Random.Range(1, currentWaypoint.nextWaypoints.Length);
+        Random.Range(0, currentWaypoint.nextWaypoints.Length);
+        if(lane>=currentWaypoint.nextWaypoints.Length){
+            lane=currentWaypoint.nextWaypoints.Length-1;
+        }else if(lane<0){
+            lane=0;
+        }
+    }
+    public void Oil(){
+        currentSpeed/=2f;
+        crashICD=Time.time+crashCD;
+        ChangeLane();
     }
     public virtual void ReachWaypoint(Waypoint waypoint){
         laneLock=waypoint.lockLane;
-        SpriteRenderer rend=GetComponentInChildren<SpriteRenderer>();
         rend.flipX=waypoint.faceRight;
         if(Time.time>changeLaneICD && Random.Range(0f,100f)<=impulsivity){
-            nextWaypoint=Random.Range(1, 2);
+            ChangeLane();
         }else{
-            nextWaypoint=0;
+            lane=currentWaypoint.straightLane;
         }
         currentWaypoint=waypoint;
-        Draft draft=GetComponentInChildren<Draft>();
         draft.gameObject.transform.rotation=waypoint.gameObject.transform.rotation;
+        Debug.LogWarning(""+gameObject.name+" to "+currentWaypoint.name+"["+lane+"]");
     }
     //helper
     public void Draft(){
@@ -132,4 +144,5 @@ public class Car : MonoBehaviour
             currentSpeed=maxSpeed;
         }
     }
+    protected virtual int GetLane() => lane;
 }

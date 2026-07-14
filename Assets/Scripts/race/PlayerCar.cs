@@ -13,6 +13,7 @@ public class PlayerCar : Car
     public TMP_Text speedTx;
     public RawImage speedImg;
     public Texture2D[] speedSprites;
+    int idealLane=0;
     //import
     MiniMenu menu;
 
@@ -20,8 +21,11 @@ public class PlayerCar : Car
 
     //exe
     void Start(){
+        rend=GetComponentInChildren<SpriteRenderer>();
+        draft=GetComponentInChildren<Draft>();
         currentSpeed=minSpeed;
         frictionICD=frictionCD;
+        idealLane=lane;
         menu=FindAnyObjectByType<MiniMenu>();
         uimsg=FindAnyObjectByType<UIMsg>();
         uimsg.AddLog("Press [Space] or Click [RMB] quickly to accelerate.");
@@ -55,13 +59,21 @@ public class PlayerCar : Car
     }
     public void PlayerChangeLane(){
         if(Input.GetKeyDown(KeyCode.W) && !laneLock /*&& Time.time>changeLaneICD*/){
-            nextWaypoint=0;
+            idealLane=currentWaypoint.straightLane;
         }else if(Input.GetKeyDown(KeyCode.E) && !laneLock /*&& Time.time>changeLaneICD*/){
-            nextWaypoint++;
-            nextWaypoint%=currentWaypoint.nextWaypoints.Length;
+            idealLane++;
+            if(idealLane>=5){
+                idealLane=4;
+            }else{
+                uimsg.AddLog("Changing lane right!");
+            }
         }else if(Input.GetKeyDown(KeyCode.Q) && !laneLock /*&& Time.time>changeLaneICD*/){
-            nextWaypoint--;
-            nextWaypoint%=currentWaypoint.nextWaypoints.Length;
+            idealLane--;
+            if(idealLane<0){
+                idealLane=0;
+            }else{
+                uimsg.AddLog("Changing lane left!");
+            }
         }
     }
     public override void ReachWaypoint(Waypoint waypoint){
@@ -72,7 +84,7 @@ public class PlayerCar : Car
         Draft draft=GetComponentInChildren<Draft>();
         draft.gameObject.transform.rotation=waypoint.gameObject.transform.rotation;
     }
-    protected void Crash(Car other){
+    new protected void Crash(Car other){
         Debug.Log("Crash! "+gameObject.name+" v "+other.gameObject.name);
         draftScale=0f;
         other.currentSpeed+=currentSpeed;
@@ -112,5 +124,48 @@ public class PlayerCar : Car
             FinishLine fl = FindAnyObjectByType<FinishLine>();
             fl.OnLose();
         }
+    }
+    protected override int GetLane(){
+        switch(currentWaypoint.nextWaypoints.Length)
+        {
+            case 1:
+                lane=0;
+                break;
+            case 2:
+                if(idealLane<3){
+                    lane=0;
+                }else{
+                    lane=1;
+                }
+                break;
+            case 3:
+                if(idealLane<2){
+                    lane=0;
+                }else if(idealLane==2){
+                    lane=1;
+                }else{
+                    lane=2;
+                }
+                break;
+            case 4:
+                if(idealLane==0){
+                    lane=0;
+                }else if(idealLane<=2){
+                    lane=1;
+                }else if(idealLane==3){
+                    lane=2;
+                }else if(idealLane>3){
+                    lane=3;
+                }
+                break;
+            case 5:
+                lane=idealLane;
+                break;
+            default:
+                Debug.LogError("PlayerCar: GetLane: Lane error");
+                lane=0;
+                break;
+        }
+        return lane;
     }
 }

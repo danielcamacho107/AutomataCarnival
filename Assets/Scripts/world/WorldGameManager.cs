@@ -55,6 +55,9 @@ public class WorldGameManager : MonoBehaviour
     public void UiUpdate()
     {
         // Actualizar UI con los recursos
+        if(resxmgr==null){
+            resxmgr=FindAnyObjectByType<ResourceManager>();
+        }
         foreach(ResourceData resource in resxmgr.resources)
         {
             if(resource.resourceName ==

@@ -20,11 +20,11 @@ public class Oil : MonoBehaviour
     void OnTriggerEnter(Collider col){
         Car car=col.gameObject.GetComponent<Car>();
         if(car!=null){
-            car.ChangeLane();
+            car.Oil();
             PlayerCar plr=col.gameObject.GetComponent<PlayerCar>();
             if(plr!=null){
                 UIMsg uimsg=FindAnyObjectByType<UIMsg>();
-                uimsg.AddLog("Slippy! Changing lane!");
+                uimsg.AddLog("Slippy! Slowing down!");
             }
             Destroy(gameObject);
         }

@@ -11,7 +11,8 @@ public class Waypoint : MonoBehaviour
     [Header("Waypoint")]
     public bool faceRight=true;
     public bool lockLane=false;
-    public GameObject[] nextWaypoints; //reserve 0 for same-lane; q/-1/left e/+1/right
+    public GameObject[] nextWaypoints; //to 0 leftward, to INF rightward
+    public int straightLane=0;
     [Header("Props")]
     public float spawnProbability=50f;
     public float spawnCD=15f;
