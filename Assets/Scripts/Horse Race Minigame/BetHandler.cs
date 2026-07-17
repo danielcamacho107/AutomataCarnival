@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class BetHandler : MonoBehaviour
 {
@@ -44,6 +45,14 @@ public class BetHandler : MonoBehaviour
         HorseManager.instance.StartRace();
     }
 
+    private IEnumerator WaitToResetRaceCoroutine()
+    {
+        // Wait for a short duration before
+        yield return new WaitForSeconds(1.0f);
+
+        // Reset the race state in the Horse
+        HorseManager.instance.RestartRace();
+    }
     private void OnHorseReachedGoal(Horse winner)
     {
         m_BetWonCallback?.Invoke(m_PredictedWinner == winner);
@@ -55,7 +64,7 @@ public class BetHandler : MonoBehaviour
         m_SelectedHorse = null;
 
         // Reset the race state in the HorseManager
-        HorseManager.instance.RestartRace();
+        StartCoroutine(WaitToResetRaceCoroutine());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
