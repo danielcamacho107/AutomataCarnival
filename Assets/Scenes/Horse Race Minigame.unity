@@ -697,11 +697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6279053333894944004, guid: 8bc639f8ee2091d419ad7fa68cff099c, type: 3}
       propertyPath: m_HorseMovementTime
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6279053333894944004, guid: 8bc639f8ee2091d419ad7fa68cff099c, type: 3}
       propertyPath: m_HorseMovementSteps
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

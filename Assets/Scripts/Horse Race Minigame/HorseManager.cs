@@ -162,7 +162,6 @@ public class HorseManager : MonoBehaviour
             return;
         }
         m_Instance = this;
-        DontDestroyOnLoad(gameObject);
         Initialize();
     }
 
