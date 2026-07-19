@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BottleScript : MonoBehaviour
 {
@@ -8,8 +10,12 @@ public class BottleScript : MonoBehaviour
 
     [Header("Medidor de Potencia")]
     public float powerSpeed = 2f;
+    public Slider powerSlider;
 
-    // 0 = Botella
+    [Header("Intentos")]
+    public int maxShots = 3;
+
+    // 0 = Apuntar
     // 1 = Potencia
     // 2 = Finalizado
     private int phase = 0;
@@ -17,7 +23,25 @@ public class BottleScript : MonoBehaviour
     private int precisionScore;
     private int powerScore;
 
-    private float powerValue; // 0-1
+    private float powerValue;
+    [SerializeField] private GameObject UiMenupanl;
+
+    private float precisionPercent;
+    private float powerPercent;
+    [SerializeField] private TextMeshProUGUI ResultText;
+
+    private int currentShot = 0;
+    private int hits = 0;
+
+    void Start()
+    {
+        if (powerSlider != null)
+        {
+            powerSlider.minValue = 0;
+            powerSlider.maxValue = 1;
+            powerSlider.value = 0;
+        }
+    }
 
     void Update()
     {
@@ -29,6 +53,15 @@ public class BottleScript : MonoBehaviour
 
             case 1:
                 UpdatePowerMeter();
+                break;
+
+            case 2:
+                   EndGame();
+
+               /*if (Input.GetKeyDown(KeyCode.R))
+                {
+                   // RestartGame();
+                }*/
                 break;
         }
     }
@@ -47,6 +80,8 @@ public class BottleScript : MonoBehaviour
 
             precisionScore = CalculateScore(Mathf.Abs(currentAngle), maxAngle);
 
+            precisionPercent = 1f - (Mathf.Abs(currentAngle) / maxAngle);
+
             Debug.Log("Precisión: " + precisionScore);
 
             phase = 1;
@@ -55,23 +90,52 @@ public class BottleScript : MonoBehaviour
 
     void UpdatePowerMeter()
     {
-        // Valor entre 0 y 1
         powerValue = (Mathf.Sin(Time.time * powerSpeed) + 1f) / 2f;
 
-        // Aquí puedes mover un Slider o una barra
-        Debug.Log($"Potencia: {powerValue:F2}");
+        if (powerSlider != null)
+            powerSlider.value = powerValue;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             powerScore = CalculateScore(Mathf.Abs(powerValue - 0.5f), 0.5f);
 
-            Debug.Log("Potencia Score: " + powerScore);
+            powerPercent = 1f - (Mathf.Abs(powerValue - 0.5f) / 0.5f);
 
-            phase = 2;
+            float hitChance = (precisionPercent * 0.7f) + (powerPercent * 0.3f);
 
-            Debug.Log("----------------");
+            bool hit = Random.value <= hitChance;
+
+            currentShot++;
+
+            Debug.Log("----------------------------");
+            Debug.Log("Tiro #" + currentShot);
             Debug.Log("Precisión: " + precisionScore);
             Debug.Log("Potencia : " + powerScore);
+            Debug.Log("Probabilidad: " + Mathf.RoundToInt(hitChance * 100) + "%");
+
+            if (hit)
+            {
+                hits++;
+                Debug.Log(" ¡ACERTASTE!");
+            }
+            else
+            {
+                Debug.Log(" FALLASTE");
+            }
+
+            if (currentShot >= maxShots)
+            {
+                phase = 2;
+
+                Debug.Log("========================");
+                Debug.Log("FIN DEL JUEGO");
+                Debug.Log("Aciertos: " + hits + " / " + maxShots);
+                Debug.Log("Presiona R para reiniciar.");
+            }
+            else
+            {
+                RestartShot();
+            }
         }
     }
 
@@ -87,13 +151,41 @@ public class BottleScript : MonoBehaviour
         return 1;
     }
 
-    public void Restart()
+    void RestartShot()
     {
         phase = 0;
+
         precisionScore = 0;
         powerScore = 0;
         powerValue = 0;
 
         transform.localRotation = Quaternion.identity;
+
+        if (powerSlider != null)
+            powerSlider.value = 0;
     }
+
+    public void RestartGame()
+    {
+        currentShot = 0;
+        hits = 0;
+
+        RestartShot();
+
+        Debug.Log("Juego reiniciado.");
+    }
+    public void EndGame()
+{
+    Time.timeScale = 0f;
+
+    if (hits >= 2)
+    {
+        ResultText.text = "¡You Win!";
+    }
+    else
+    {
+        ResultText.text = "¡You Lose!";
+    }
+    UiMenupanl.SetActive(true);
+}
 }
