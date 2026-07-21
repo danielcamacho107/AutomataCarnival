@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shooting Minigame.unity
     guid: 3237a133c0fcc244b9a4420885f7fa78
+  - enabled: 1
+    path: Assets/Scenes/Pachinko.unity
+    guid: 9b72a8ac43a3e044f86d7baf4205330e
+  - enabled: 1
+    path: Assets/Scenes/Claw.unity
+    guid: 33fdaef2638f34b428a9846e95d65302
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
