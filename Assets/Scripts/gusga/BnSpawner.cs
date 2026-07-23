@@ -24,6 +24,9 @@ public class BnSpawner : MonoBehaviour
             Instantiate(pool[Random.Range(0, pool.Length)], offset, Quaternion.identity);
         }
     }
+    public void SpawnGOAt(){
+        Instantiate(pool[Random.Range(0, pool.Length)], (canvas.transform.position+offset), Quaternion.identity);
+    }
     public void SaveSpawnGO(){
         if(spawnInCanvas){
             savedGO=Instantiate(pool[Random.Range(0, pool.Length)], (canvas.transform.position+offset), Quaternion.identity, canvas.transform);

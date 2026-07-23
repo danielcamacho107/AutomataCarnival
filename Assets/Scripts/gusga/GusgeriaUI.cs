@@ -8,6 +8,8 @@ public class GusgeriaUI : MonoBehaviour
     //attr
     public GameObject[] areas;
     public GameObject[] areaBns;
+    public GameObject canvasAreas;
+    public GameObject[] anchors;
     //import
     GusgeriaMarker mark;
 
@@ -16,6 +18,7 @@ public class GusgeriaUI : MonoBehaviour
     //exe
     void Start(){
         mark=FindAnyObjectByType<GusgeriaMarker>();
+        ViewArea(0);
     }
     //funx
     public void ViewArea(int areaIdx){
@@ -26,6 +29,7 @@ public class GusgeriaUI : MonoBehaviour
             bn.SetActive(true);
         }
         areaBns[areaIdx].SetActive(false);
+        canvasAreas.transform.position=new Vector3(anchors[areaIdx].transform.position.x, canvasAreas.transform.position.y, canvasAreas.transform.position.z);
         if(areaIdx==0){
             areaBns[3].SetActive(true);
             areaBns[4].SetActive(true);

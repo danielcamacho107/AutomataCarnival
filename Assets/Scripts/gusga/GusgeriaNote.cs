@@ -90,20 +90,28 @@ public class GusgeriaNote : MonoBehaviour
     public void NextDish(bool forward){
         if(forward){
             selectedDish++;
-            selectedDish%=mainDishes.Length;
+            if(selectedDish>=mainDishes.Length){
+                selectedDish=0;
+            }
         }else{
             selectedDish--;
-            selectedDish%=mainDishes.Length;
+            if(selectedDish<mainDishes.Length){
+                selectedDish=mainDishes.Length-1;
+            }
         }
         UpdateDishesUI();
     }
     public void NextDrink(bool forward){
         if(forward){
             selectedDrink++;
-            selectedDrink%=drinks.Length;
+            if(selectedDrink>=drinks.Length){
+                selectedDrink=0;
+            }
         }else{
             selectedDrink--;
-            selectedDrink%=drinks.Length;
+            if(selectedDrink<drinks.Length){
+                selectedDrink=drinks.Length-1;
+            }
         }
         UpdateDrinksUI();
     }
