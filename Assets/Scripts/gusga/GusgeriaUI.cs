@@ -26,6 +26,13 @@ public class GusgeriaUI : MonoBehaviour
             bn.SetActive(true);
         }
         areaBns[areaIdx].SetActive(false);
+        if(areaIdx==0){
+            areaBns[3].SetActive(true);
+            areaBns[4].SetActive(true);
+        }else{
+            areaBns[3].SetActive(false);
+            areaBns[4].SetActive(false);
+        }
     }
     //helper
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a0584e43a7beb084ba116e266a0f18d4
+guid: de090a105d5af3a47b4bb275f68876b9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: navBns_0
+      name: customers_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 128
-        height: 128
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01c0e4f2a3d0b7d45903c7ac6a5f7a38
-      internalID: -1603051987
+      spriteID: 6d22a3ef9016d6a438f3ca2d685f324c
+      internalID: 1001642062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: navBns_1
+      name: customers_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
+        x: 300
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,64 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b7153cfedd8dfc4aaea6afcecc0c330
-      internalID: 2008988575
+      spriteID: 148c431944b4567499ec585a1f193aab
+      internalID: 891783949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: navBns_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9ada293a4d62a446bc380e02c632215
-      internalID: 1998331503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: navBns_3
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d89748af6a5058f499242f02f30bb6fb
-      internalID: 1440076077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: navBns_4
+      name: customers_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c80b39ac6c266d74a95a29de1b8db887
-      internalID: -1986429351
+      spriteID: 5567b077307a45e47a8ae50821a053c0
+      internalID: 297630011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: navBns_5
+      name: customers_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 300
         y: 0
-        width: 128
-        height: 128
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f57feecad3877794daa1a40b417177b2
-      internalID: -1577016725
+      spriteID: c015ca4b86b490d42a423e9e67ac567b
+      internalID: -1311269000
       vertices: []
       indices: 
       edges: []
@@ -245,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d6cced31e97c797458c08e66c2923d01
+    spriteID: bfb861cb70794314b8693521d6c9ed97
     internalID: 0
     vertices: []
     indices: 
@@ -255,12 +211,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      navBns_0: -1603051987
-      navBns_1: 2008988575
-      navBns_2: 1998331503
-      navBns_3: 1440076077
-      navBns_4: -1986429351
-      navBns_5: -1577016725
+      customers_0: 1001642062
+      customers_1: 891783949
+      customers_2: 297630011
+      customers_3: -1311269000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

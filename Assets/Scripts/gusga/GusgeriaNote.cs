@@ -8,8 +8,8 @@ public class GusgeriaNote : MonoBehaviour
 {
     //attr
     public Sprite[] mainDishes;
-    int selectedDish=0;
     public Image mainDishImg;
+    int selectedDish=0;
     /*
     0 (none)
     1 espiropapa → (papa+(cook))                      + (spice)
@@ -22,17 +22,17 @@ public class GusgeriaNote : MonoBehaviour
     8 tejuino    → tejuino           + sal            + (spice) + nieve
     */
     public Sprite[] drinks;
-    int selectedDrink=0;
     public Image drinkImg;
+    int selectedDrink=0;
     /*
     0 (none)
     1 agua
     2 rfrsc claro
     3 rfrsc oscuro
     */
-    public bool[] spices=new bool[12];
     public Sprite[] checkbox=new Sprite[2];
     public Image[] spiceCheckboxes=new Image[12];
+    bool[] selectedSpices=new bool[12];
     /*
     0 sal
     1 limon
@@ -48,13 +48,12 @@ public class GusgeriaNote : MonoBehaviour
     Ɛ azucar
     */
     public GameObject[] buttons;
-    public bool isSmall=true;
+    public GameObject[] destroyObjs;
+    bool isSmall=false;
     public GameObject smallNote;
     public GameObject bigNote;
     Vector3 offset;
     bool dragging=false;
-    UIMsg uimsg;
-
     //import
 
 
@@ -67,14 +66,10 @@ public class GusgeriaNote : MonoBehaviour
         UpdateDrinksUI();
         UpdateSpicesUIAll();
         UpdateSizeUI();
-        uimsg=FindAnyObjectByType<UIMsg>();
     }
     void Update(){
         if(Time.timeScale!=0f && dragging){
             transform.position=(Input.mousePosition+offset);
-            if(Input.GetKeyDown(KeyCode.Mouse1)){
-                StopDragging();
-            }
         }
     }
     //funx
@@ -85,6 +80,12 @@ public class GusgeriaNote : MonoBehaviour
             //including the one to save!
             //only img remains!
         }
+        foreach(GameObject dObj in destroyObjs){
+            Destroy(dObj);
+        }
+    }
+    public void DeleteNote(){
+        Destroy(gameObject);
     }
     public void NextDish(bool forward){
         if(forward){
@@ -107,15 +108,12 @@ public class GusgeriaNote : MonoBehaviour
         UpdateDrinksUI();
     }
     public void ToggleSpice(int idx){
-        spices[idx]=!spices[idx];
+        selectedSpices[idx]=!selectedSpices[idx];
         UpdateSpiceUI(idx);
     }
     public void ToggleDragging(){
         offset=transform.position-Input.mousePosition;
         dragging=!dragging;
-        if(dragging){
-            uimsg.ReplacePrompt("Click RMB to stop dragging");
-        }
     }
     //helper
     void UpdateDishesUI(){
@@ -125,14 +123,14 @@ public class GusgeriaNote : MonoBehaviour
         drinkImg.sprite=drinks[selectedDrink];
     }
     void UpdateSpiceUI(int idx){
-        if(spices[idx]){
+        if(selectedSpices[idx]){
             spiceCheckboxes[idx].sprite=checkbox[1];
         }else{
             spiceCheckboxes[idx].sprite=checkbox[0];
         }
     }
     void UpdateSpicesUIAll(){
-        for(int i=0; i<spices.Length; i++){
+        for(int i=0; i<selectedSpices.Length; i++){
             UpdateSpiceUI(i);
         }
     }
@@ -148,9 +146,5 @@ public class GusgeriaNote : MonoBehaviour
             smallNote.SetActive(false);
             bigNote.SetActive(true);
         }
-    }
-    public void StopDragging(){
-        uimsg.ClearPrompt();
-        dragging=false;
     }
 }
