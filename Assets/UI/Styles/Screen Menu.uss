@@ -10,7 +10,7 @@ VisualElement {
 
 .menu-credits-text {
     -unity-text-generator: advanced;
-    -unity-text-auto-size: best-fit 10px 100px;
+    -unity-text-auto-size: best-fit 1px 100px;
 }
 
 .menu-button {
@@ -88,8 +88,6 @@ VisualElement {
     align-self: center;
     align-items: center;
 }
-
-
 
 .hud-text {
     -unity-text-align: middle-center;

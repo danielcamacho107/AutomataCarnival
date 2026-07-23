@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "HorseRaceMinigame",
+    "maps": [
+        {
+            "name": "HorseMinigame",
+            "id": "75f758c9-24ce-4ec6-8e2c-8582d0ec545d",
+            "actions": [
+                {
+                    "name": "Bet",
+                    "type": "Button",
+                    "id": "56610e53-cd33-4181-96ef-c0f9434e07b3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "PassThrough",
+                    "id": "77761b68-0de3-4d36-b4d9-0c91d47bdb95",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f52e0025-a7e9-4ea1-9928-f6c0c8b76621",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ab237ea-350b-4328-a761-c8b2bc24bfdf",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

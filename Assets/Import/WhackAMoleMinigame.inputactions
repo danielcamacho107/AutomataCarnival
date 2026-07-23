@@ -1,0 +1,55 @@
+{
+    "version": 1,
+    "name": "WhackAMoleMinigame",
+    "maps": [
+        {
+            "name": "WhackMinigame",
+            "id": "51d8b9e5-bd2b-47da-a8a7-6fb38436fc38",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "PassThrough",
+                    "id": "56000cf1-8664-4bd8-a764-32ab1b5d82ab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Whack",
+                    "type": "Button",
+                    "id": "db36e73c-92c8-4f56-a352-76dfd1d20e3d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a1c5e719-46b8-48c9-90c1-88f6cfc37943",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "137137da-9926-4d30-8f0c-cc65f9783b92",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Whack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
