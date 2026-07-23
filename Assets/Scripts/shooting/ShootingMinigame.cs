@@ -84,6 +84,7 @@ public partial class @ShootingMinigame: IInputActionCollection2, IDisposable
     /// </summary>
     public @ShootingMinigame()
     {
+        UnityEngine.Debug.Log("Creating @ShootingMinigame at " + Environment.StackTrace);
         asset = InputActionAsset.FromJson(@"{
     ""version"": 1,
     ""name"": ""Shooting Minigame"",

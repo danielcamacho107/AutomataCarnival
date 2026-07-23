@@ -16,9 +16,9 @@ public class Whacker : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The starting time in seconds for the minigame.")]
-    private uint m_TimeRemaining;
+    uint m_TimeRemaining = 300;
 
-    private bool m_TimeTicking = false;
+    private bool m_TimeTicking = true;
 
     public uint score
     {
@@ -43,18 +43,18 @@ public class Whacker : MonoBehaviour
 
     private IEnumerator TickTimerCoorutine()
     {
-        if (m_TimeRemaining > 0 && !m_TimeTicking)
+        while(m_TimeRemaining > 0)
         {
-            m_TimeTicking = true;
             yield return new WaitForSeconds(1f);
-
+            m_TimeTicking = true;
             m_TimeRemaining--;
 
             // Trigger the event to notify subscribers of the time change
             m_WhackDataChanged?.Invoke(m_Score, m_TimeRemaining);
-
-            m_TimeTicking = false;
         }
+        m_TimeTicking = false;
+        WhackMenuMgr mgr=FindAnyObjectByType<WhackMenuMgr>();
+        mgr.OnGameEnd((int)score);
     }
 
     private void SnapToMouse()
@@ -102,10 +102,12 @@ public class Whacker : MonoBehaviour
     {
         Initialize();
     }
-
+    private void Start(){
+        StartCoroutine(TickTimerCoorutine());
+    }
     private void FixedUpdate()
     {
         SnapToMouse();
-        StartCoroutine(TickTimerCoorutine());
+        
     }
 }

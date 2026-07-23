@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Gunner : MonoBehaviour
 {
     // Delegate for handling changes in gun data (score, ammo counts)
     public delegate void GunDataChanged(uint score, uint ammoInMagazine, uint magazineCapacity, uint ammoInReserve);
-    public delegate void OutOfAmmo();
 
     private Vector2 m_MousePosition;
 
@@ -36,9 +37,6 @@ public class Gunner : MonoBehaviour
     // Event that is invoked whenever the gun data changes (score, ammo counts)
     private GunDataChanged m_OnGunDataChanged;
 
-    // Event that is invoked when the player runs out of ammo
-    private OutOfAmmo m_OnOutOfAmmo;
-
     // Accessor to get the current ammo in the magazine
     public uint ammoInMagazine { get { return m_CurrentAmmoInMagazine; } }
 
@@ -61,23 +59,13 @@ public class Gunner : MonoBehaviour
         m_OnGunDataChanged -= callback;
     }
 
-    public void SubscribeToOutOfAmmo(OutOfAmmo callback)
-    {
-        m_OnOutOfAmmo += callback;
-    }
-
-    public void UnsubscribeFromOutOfAmmo(OutOfAmmo callback)
-    {
-        m_OnOutOfAmmo -= callback;
-    }
-
     private bool CanShoot()
     {
         // Check if there is ammo in the magazine
         return m_CurrentAmmoInMagazine > 0;
     }
 
-    private IEnumerator ShootCoorutine()
+    private IEnumerator ShootCoroutine()
     {
         // Set the shooting cooldown flag to prevent multiple shots at once
         m_IsShootingInCooldown = true;
@@ -98,12 +86,6 @@ public class Gunner : MonoBehaviour
 
         // Invoke the gun data changed event to update any UI or other systems
         m_OnGunDataChanged?.Invoke(m_Score, m_CurrentAmmoInMagazine, m_GunData.magazineSize, m_CurrentTotalAmmo);
-
-        // If the magazine is empty after shooting, invoke the out of ammo event
-        if (m_CurrentAmmoInMagazine == 0u)
-        {
-            m_OnOutOfAmmo?.Invoke();
-        }
 
         // Wait for the reload time to elapse
         yield return new WaitForSeconds(1.0f / m_GunData.fireRate);
@@ -133,6 +115,10 @@ public class Gunner : MonoBehaviour
 
     private void SnapToMouse()
     {
+        if(Time.timeScale!=0f){
+            Cursor.lockState=CursorLockMode.None;
+        }
+
         // Get the mouse position in world space
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(m_MousePosition);
 
@@ -201,6 +187,18 @@ public class Gunner : MonoBehaviour
         Initialize();
     }
 
+    //chatgpt made me add this, delete if not needed (idk what it does) -DC
+    private void OnDestroy()
+    {
+        if (m_InputActions == null)
+        {
+            return;
+        }
+        m_InputActions.Disable();
+        m_InputActions.Dispose();
+        m_InputActions = null;
+    }
+
     private void Start()
     {
         // Invoke the gun data changed event to initialize any UI or other systems with the starting values
@@ -214,7 +212,7 @@ public class Gunner : MonoBehaviour
         // Continuously shoot while the shoot action is active
         if (m_IsShooting && CanShoot() && !m_IsShootingInCooldown)
         {
-            StartCoroutine(ShootCoorutine());
+            StartCoroutine(ShootCoroutine());
         }
     }
 }

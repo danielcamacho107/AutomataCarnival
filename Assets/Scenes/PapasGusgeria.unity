@@ -2447,7 +2447,7 @@ MonoBehaviour:
   - {fileID: 1080374524}
   ordersTx: {fileID: 2129632531}
   scoreTx: {fileID: 235245932}
-  ptsPerOk: 5
+  ptsPerOk: 50
   rewardsTx: {fileID: 38026078}
 --- !u!1 &373187580
 GameObject:

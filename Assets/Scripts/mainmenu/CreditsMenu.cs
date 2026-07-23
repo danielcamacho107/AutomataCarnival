@@ -129,55 +129,11 @@ public class CreditsMenu : Menu
         }
     }
 
-    private void LinkBackButton()
-    {
-        // Get the UIDocument component
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        if (uiDocument is null)
-        {
-            Debug.LogError("CreditsMenu: UIDocument component is not assigned.");
-            return;
-        }
-
-        // Get the root visual element
-        VisualElement root = uiDocument.rootVisualElement;
-        if (root is null)
-        {
-            Debug.LogError("CreditsMenu: Root visual element not found.");
-            return;
-        }
-
-        // Find the back button in the UI
-        Button backButton = root.Q<Button>("BackToMenuButton");
-        if (backButton is null)
-        {
-            Debug.LogError("CreditsMenu: Back button not found in the UI.");
-            return;
-        }
-
-        // Link the back button to the CloseMenu method
-        backButton.clicked += () => gameObject.SetActive(false);
-    }
-
-    private void Initialize()
+    private void Awake()
     {
         GetTemplate();
         CreateCollaboratorElements();
         FillCollaboratorData();
         AssignSounds();
-        LinkBackButton();
-    }
-
-    private void Awake()
-    {
-        Initialize();
-
-        // Change the name of the GameObject to "CreditsMenu UI" for clarity in the hierarchy
-        gameObject.name = "CreditsMenu UI";
-    }
-
-    private void OnEnable()
-    {
-        Initialize();
     }
 }
