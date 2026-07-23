@@ -6989,7 +6989,7 @@ GameObject:
   - component: {fileID: 1638995350}
   - component: {fileID: 1638995349}
   - component: {fileID: 1638995348}
-  - component: {fileID: 1638995347}
+  - component: {fileID: 1638995351}
   m_Layer: 0
   m_Name: WheelPivot
   m_TagString: Untagged
@@ -6997,23 +6997,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1638995347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638995346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17da4943307577d42a61007350771d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showPrompt: 1
-  promptMsg: Press [E] to toggle
-  coll: {fileID: 1638995349}
-  meshRenderer: {fileID: 0}
-  spriteRenderer: {fileID: 608898283}
 --- !u!65 &1638995348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7072,6 +7055,21 @@ Transform:
   - {fileID: 608898284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!114 &1638995351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638995346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ada5c5c04ca2b4481acb399b4c017e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showPrompt: 1
+  promptMsg: Press [E] to prepare street food
+  sceneName: PapasGusgeria
 --- !u!1 &1648944716
 GameObject:
   m_ObjectHideFlags: 0

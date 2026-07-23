@@ -82,7 +82,7 @@ public class GusgeriaCustomer : MonoBehaviour
         csmerImg.sprite=csmerImgs[chosenCsmer];
         csmerImg.color=Random.ColorHSV(0f, 1f, 0f, 1f, 0.75f, 1f, 1f, 1f);
         csmerName=csmerNames[Random.Range(0,csmerNamesPer)+(chosenCsmer*csmerNamesPer)];
-        waitTime=Random.Range(30f, 120f);
+        waitTime=Random.Range(waitTime/2f, 2*waitTime);
     }
     public void NextMsg(){
         cDiag++;

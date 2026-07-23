@@ -12,10 +12,14 @@ public class BnSpawner : MonoBehaviour
     public Vector3 offset;
     public GameObject savedGO;
     //import
+    GusgeriaUI gsui;
 
 
 
     //exe
+    void Start(){
+        gsui=FindAnyObjectByType<GusgeriaUI>();
+    }
     //funx
     public void SpawnGO(){
         if(spawnInCanvas){
@@ -25,7 +29,20 @@ public class BnSpawner : MonoBehaviour
         }
     }
     public void SpawnGOAt(){
-        Instantiate(pool[Random.Range(0, pool.Length)], (canvas.transform.position+offset), Quaternion.identity);
+        savedGO=Instantiate(pool[Random.Range(0, pool.Length)], (canvas.transform.position+offset), Quaternion.identity);
+        switch(gsui.currentArea){
+            case 0:
+                gsui.GOsInCounter.Add(savedGO);
+                break;
+            case 1:
+                gsui.GOsInKitchen.Add(savedGO);
+                break;
+            case 2:
+                gsui.GOsInFurnace.Add(savedGO);
+                break;
+            default:
+                break;
+        }
     }
     public void SaveSpawnGO(){
         if(spawnInCanvas){

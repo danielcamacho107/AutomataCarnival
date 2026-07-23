@@ -33,6 +33,12 @@ public class MiniMenu : MonoBehaviour
         }
         SetPauseState(false, false);
     }
+    public void HideAllMenus(bool hasCursor){
+        foreach(GameObject menu in menus){
+           menu.SetActive(false);
+        }
+        SetPauseState(false, hasCursor);
+    }
     public void HideAllMenus(bool paused, bool hasCursor){
         foreach(GameObject menu in menus){
            menu.SetActive(false);

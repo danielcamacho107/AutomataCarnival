@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 //v1.0
 //the waitlist's manager
@@ -18,15 +19,30 @@ public class GusgeriaWaitListMgr : MonoBehaviour
     List<CsmerNode> waitlist=new List<CsmerNode>();
     public GusgeriaWaitBn[] waitBns;
     //import
-
+    public TMP_Text ordersTx;
+    int ordersDone=0;
+    public TMP_Text scoreTx;
+    int score=0;
+    public int ptsPerOk=5;
+    MiniMenu menu;
+    ResourceManager resxmgr;
+    public TMP_Text rewardsTx;
 
 
     //exe
     void Start(){
         HideBns();
+        resxmgr=FindAnyObjectByType<ResourceManager>();
+        menu=FindAnyObjectByType<MiniMenu>();
+        menu.HideAllMenus(false, true);
+        UpdateOrdersUI();
     }
     void Update(){
-        
+        if(Time.timeScale!=0f){
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                menu.ShowMenu(1, true);
+            }
+        }
     }
     //funx
     void HideBns(){
@@ -100,5 +116,50 @@ public class GusgeriaWaitListMgr : MonoBehaviour
         }
         
     }
+    public void TallyPoints(GusgeriaWaitBn gwbn){
+        GusgeriaUI gsui=FindAnyObjectByType<GusgeriaUI>();
+        int countOk=0;
+        foreach (GameObject go in gsui.GOsInCounter){
+            GusgeriaFoodItem gfi=go.GetComponent<GusgeriaFoodItem>();
+            if(gfi!=null){
+                if(gfi.dish==gwbn.dish){
+                    score+=ptsPerOk;
+                    countOk++;
+                }
+                if(gfi.drink==gwbn.drink){
+                    score+=ptsPerOk;
+                    countOk++;
+                }
+                if(gwbn.iconImg.sprite!=gfi.rend.sprite){
+                    score+=ptsPerOk;
+                    countOk++;
+                }
+                for(int i=0; i<gwbn.spices.Length; i++){
+                    if(gwbn.spices[i]==gfi.spices[i]){
+                        score+=ptsPerOk;
+                        countOk++;
+                    }
+                }
+            }
+        }
+        if(countOk>8){
+            ordersDone++;
+        }
+        gsui.DestroyGOsIn(0);
+        UpdateOrdersUI();
+    }
+    public void OnGameEnd(){
+        UpdateOrdersUI();
+        Debug.Log("Out of time!");
+        rewardsTx.text="tickets +"+score+"!";
+        if(resxmgr!=null){
+            resxmgr.AddResource("Tickets", score);
+        }
+        menu.ShowMenu(0, true);
+    }
     //helper
+    void UpdateOrdersUI(){
+        ordersTx.text="Orders: "+ordersDone;
+        scoreTx.text="Score: "+score;
+    }
 }

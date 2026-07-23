@@ -42,6 +42,8 @@ public class GusgeriaGlobalTimer : MonoBehaviour
             waitTime-=1f;
             UpdateTimerUI();
         }
+        GusgeriaWaitListMgr gwlmgr=FindAnyObjectByType<GusgeriaWaitListMgr>();
+        gwlmgr.OnGameEnd();
         //call end game
     }
     //helper

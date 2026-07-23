@@ -1,9 +1,9 @@
 using UnityEngine;
 
 //v1.0
-//desco
+//Enables otherwise impossible recipes
 
-public class GusgeriaFurnace : MonoBehaviour
+public class Divider : MonoBehaviour
 {
     //attr
     //import

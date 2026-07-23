@@ -15,7 +15,7 @@ public class GusgeriaFoodItem : MonoBehaviour
     public Vector2[] spiceTargetColors=new Vector2[12]; //x color y sat
     public bool isSpice=false;
     //import
-    SpriteRenderer rend;
+    [HideInInspector] public SpriteRenderer rend;
     public Sprite[] dishImgs;
     Collider2D coll;
     Rigidbody2D rb;

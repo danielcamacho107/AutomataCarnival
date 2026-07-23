@@ -137,4 +137,4 @@ MonoBehaviour:
   - {fileID: 297630011, guid: de090a105d5af3a47b4bb275f68876b9, type: 3}
   - {fileID: -1311269000, guid: de090a105d5af3a47b4bb275f68876b9, type: 3}
   csmerImg: {fileID: 2445114133245814890}
-  waitTime: 60
+  waitTime: 120

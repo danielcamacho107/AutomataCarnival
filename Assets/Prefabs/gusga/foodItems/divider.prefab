@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7681434256655815147}
   - component: {fileID: 7000121217609147476}
   - component: {fileID: 7315715381911913203}
-  - component: {fileID: 7079349518444894454}
+  - component: {fileID: 130803159293715455}
   m_Layer: 0
-  m_Name: Spice_4
+  m_Name: divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4.5, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3357396837899602350}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 25
-  m_Sprite: {fileID: 2096105122, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16b51cf75c7e53046bb51d28c8d30d96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,13 +130,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.3333334}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.3333334}
   m_EdgeRadius: 0
 --- !u!50 &7315715381911913203
 Rigidbody2D:
@@ -165,7 +165,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7079349518444894454
+--- !u!114 &130803159293715455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,103 +174,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3625920284790340927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c025fa991f8a9ba438ef4da740c2fb5b, type: 3}
+  m_Script: {fileID: 11500000, guid: b207111e7f6932a458efb4350564d773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dish: 0
-  drink: 0
-  isDrink: 0
-  ingredients: 000000000000000000000000
-  cookTime:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  spices: 000000000100000000000000
-  spiceTargetColors:
-  - {x: 0.16, y: 0}
-  - {x: 0.25, y: 1}
-  - {x: 0, y: 1}
-  - {x: 0.16, y: 0.25}
-  - {x: 0.11, y: 1}
-  - {x: 0.027, y: 1}
-  - {x: 0.83, y: 0.5}
-  - {x: 0.138, y: 1}
-  - {x: 0.75, y: 0.25}
-  - {x: 1, y: 1}
-  - {x: 0.138, y: 0.5}
-  - {x: 0.5, y: 0}
-  isSpice: 1
-  rend: {fileID: 0}
-  dishImgs:
-  - {fileID: 1074491229, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 2139492773, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1248192164, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 174962009, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 357612670, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 2139492773, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 2139492773, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 174962009, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 174962009, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -1531001873, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -961193088, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: -366965059, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  - {fileID: 1831316013, guid: cfd97fcdca0046f45a608211972196dc, type: 3}
-  altIngImg: {fileID: 0}
 --- !u!1 &6256386308718759915
 GameObject:
   m_ObjectHideFlags: 0

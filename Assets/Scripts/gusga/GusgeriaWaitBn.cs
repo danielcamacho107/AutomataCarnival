@@ -62,6 +62,8 @@ public class GusgeriaWaitBn : MonoBehaviour
         //hidebn or call chain shift
     }
     public void CheckOrder(){
+        gwlmgr.TallyPoints(this);
+        gwlmgr.ChainShift(this);
         //find what is on the scene
         //foreach order break it up into single orders
         //foreach order break it up into components
