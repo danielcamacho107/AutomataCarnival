@@ -1,0 +1,52 @@
+Comida hecha:
+　1 09.10 espiropapa 
+　　→(papa+(cook)) + (spice)
+　2       esquite
+　　→(elote+(cook)) + (spice)
+　3 11.12 churros
+　　→(masa+(cook)) + {sal/azucar} + (spice)
+　4 13.20 taco
+　　→(tortilla+(cook)) + (carne+(cook)) + (spice)
+　5 21.28 tostilocos
+　　→(papa+(cook)) + (salch+(cook)) + (spice)
+　6 29.36 hotdog
+　　→(pan+(cook)) + (salch+(cook)) + (spice)
+　7 37.62 hamburguesa
+　　→(pan+(cook)) + (carne+(cook)) + (spice) + (pan+(cook))
+　8       tejuino
+　　→tejuino + sal + nieve + (spice)
+
+Bebida:
+　1 2 botella de agua
+　2 3 refresco claro
+　3 5 refresco oscuro
+　
+
+Ingredientes:
+　0 carne cruda/cocida
+　1 salchicha cruda/cocida
+　2 papa cruda/cocida
+　3 tortilla
+　4 pan botm
+　5 pan top
+　6 pan hotdog
+　7 masa
+
+　8 nieve
+　9 elote X
+　X azucar Ɛ
+　Ɛ sal 0
+
+Especias:
+　0 sal
+　1 limon
+　2 catsup
+　3 mayonesa
+　4 mostaza
+　5 salsa picante
+　6 pink sauce
+　7 queso
+　8 cebolla
+　9 jitomate
+　X elote
+　Ɛ azucar

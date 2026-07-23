@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Claw.unity
     guid: 33fdaef2638f34b428a9846e95d65302
+  - enabled: 1
+    path: Assets/Scenes/PapasGusgeria.unity
+    guid: df773fb112495ac4b99d48b89864a20d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
